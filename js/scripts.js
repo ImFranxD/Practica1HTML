@@ -1,0 +1,30 @@
+window.onload = function() {
+
+    const usuarios = [
+        {nombre : "Francisco Rafael", apellidos : "Mellado Martínez", email : "frmm345@gmail.com", tlf : 123456789},
+        {nombre : "Juan", apellidos : "López Botella", email : "prueba@prueba.com", tlf : 123456789},
+        {nombre : "Guillermo", apellidos : "Canales Albert", email : "prueba123@prueba123.com", tlf : 123456789},
+        {nombre : "Samuel", apellidos : "Llanos Gilbert", email : "prueba456@prueba456.com", tlf : 123456789}
+    ];
+
+    const cuerpoTabla = document.querySelector("table tbody");
+
+    function rellenarTabla(){
+        cuerpoTabla.innerHTML = "";
+        usuarios.forEach((usuario, index) => {
+            const row = cuerpoTabla.insertRow();
+            row.innerHTML = `<td>${usuario.nombre}</td><td>${usuario.apellidos}</td><td>${usuario.email}</td><td>${usuario.tlf}</td><td><button class="borrarUsuario" data-index="${index}" onclick="borrarFila(${index})">X</button></td>`;
+        });
+    }
+
+    rellenarTabla();
+
+    cuerpoTabla.addEventListener("click", function(event){
+        if(event.target.classList.contains("borrarUsuario")){
+            const index = event.target.getAttribute("data-index");
+            cuerpoTabla.deleteRow(index);
+        }
+    });
+
+
+};
