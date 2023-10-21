@@ -26,5 +26,25 @@ window.onload = function() {
         }
     });
 
+    function filtrarTabla(){
+        const input = document.getElementById("filtro");
+        const filtro = input.value.toLowerCase();
+        const filas = cuerpoTabla.getElementsByTagName("tr");
+
+        for(let i = 0; i < filas.length; i++){
+            const nombre = filas[i].getElementsByTagName("td")[0].textContent.toLowerCase();
+            const apellido = filas[i].getElementsByTagName("td")[1].textContent.toLowerCase();
+
+            if(nombre.includes(filtro) || apellido.includes(filtro)){
+                filas[i].style.display = "";
+            }else{
+                filas[i].style.display = "none";
+            }
+        }
+    }
+
+    document.getElementById("filtro").addEventListener("input", function(){
+        filtrarTabla();
+    });
 
 };
