@@ -35,7 +35,11 @@ window.onload = function() {
             const nombre = filas[i].getElementsByTagName("td")[0].textContent.toLowerCase();
             const apellido = filas[i].getElementsByTagName("td")[1].textContent.toLowerCase();
 
-            if(nombre.includes(filtro) || apellido.includes(filtro)){
+
+
+            if(filtro.length < 3){
+                filas[i].style.display = "";
+            }else if(nombre.includes(filtro) || apellido.includes(filtro)){
                 filas[i].style.display = "";
             }else{
                 filas[i].style.display = "none";
