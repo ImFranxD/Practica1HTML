@@ -1,6 +1,6 @@
 <?php
-
-include ("models/User.php");
+if($_SERVER["REQUEST_METHOD"] == "POST"){
+include('models/User.php');
 
 $nombre = isset($_POST['nombre'])? $_POST['nombre'] : 'nombre';
 $apellidos = isset($_POST['apellidos'])? $_POST['apellidos'] : 'apellidos';
@@ -17,6 +17,20 @@ $user -> setTelefono($telefono);
 $user -> setEmail($email);
 $user -> setSexo($sexo);
 
-echo $user -> toJson();
+$archivo = fopen("usuarios.txt", "a");
 
+if($archivo){
+    $usuarioJson = $user -> toJson();
+    fwrite($archivo,"Nombre: " . $user->getNombre() . "\n");
+    fwrite($archivo,"Apellidos: " . $user->getApellidos() . "\n");
+    fwrite($archivo,"Contraseña: " . $user->getPassword() . "\n");
+    fwrite($archivo,"Telefono: " . $user->getTelefono() . "\n");
+    fwrite($archivo,"Email: " . $user->getEmail() . "\n");
+    fwrite($archivo,"Sexo: " . $user->getSexo() . "\n");
+    fwrite($archivo, "/-----------------------/\n");
+    fclose($archivo);
+}
+
+echo $user -> toJson();
+}
 ?>

@@ -1,14 +1,15 @@
 <?php
 
-    $nombre;
-    $apellidos;
-    $password;
-    $telefono;
-    $email;
-    $sexo;
+class User{
+    private $nombre;
+    private $apellidos;
+    private $password;
+    private $telefono;
+    private $email;
+    private $sexo;
 
     //Constructor
-    function __contruct(){
+    public function __contruct(){
         $this->nombre="";
         $this->apellidos="";
         $this->password="";
@@ -18,48 +19,48 @@
     }
 
     //Setters y Getters
-    function setNombre($nombre){
+    public function setNombre($nombre){
         $this->nombre=$nombre;
     }
 
-    function setApellidos($apellidos){
+    public function setApellidos($apellidos){
         $this->apellidos=$apellidos;
     }
 
-    function setPassword($password){
+    public function setPassword($password){
         $this->password=$password;
     }
 
-    function setTelefono($telefono){
+    public function setTelefono($telefono){
         $this->telefono=$telefono;
     }
 
-    function setEmail($email){
+    public function setEmail($email){
         $this->email=$email;
     }
 
-    function setSexo($sexo){
+    public function setSexo($sexo){
         $this->sexo=$sexo;
     }
 
-    function getNombre(){
+    public function getNombre(){
         return $this->nombre;
     }
 
-    function getApellidos(){
+    public function getApellidos(){
         return $this->apellidos;
     }
 
-    function getPassword(){
+    public function getPassword(){
         return $this->password;
     }
-    function getTelefono(){
+    public function getTelefono(){
         return $this->telefono;
     }
-    function getEmail(){
+    public function getEmail(){
         return $this->email;
     }
-    function getSexo(){
+    public function getSexo(){
         return $this->sexo;
     }
 
@@ -75,5 +76,6 @@
 
         return json_encode($datosFormulario);
     }
+}   
 
 ?>

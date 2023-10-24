@@ -1,0 +1,64 @@
+
+
+
+Nombre: nombre
+Apellidos: apellidos
+Contraseña: password
+Telefono: telefono
+Email: email
+Nombre: nombre
+Apellidos: apellidos
+Contraseña: password
+Telefono: telefono
+Email: email
+Nombre: nombre
+Apellidos: apellidos
+Contraseña: password
+Telefono: telefono
+Email: email
+/-----------------------/
+Nombre: nombre
+Apellidos: apellidos
+Contraseña: password
+Telefono: telefono
+Email: email
+/-----------------------/
+Nombre: nombre
+Apellidos: apellidos
+Contraseña: password
+Telefono: telefono
+Email: email
+/-----------------------/
+Nombre: nombre
+Apellidos: apellidos
+Contraseña: password
+Telefono: telefono
+Email: email
+/-----------------------/
+Nombre: nombre
+Apellidos: apellidos
+Contraseña: password
+Telefono: telefono
+Email: email
+/-----------------------/
+Nombre: nombre
+Apellidos: apellidos
+Contraseña: password
+Telefono: telefono
+Email: email
+Sexo: sexo
+/-----------------------/
+Nombre: Fran
+Apellidos: Mellado
+Contraseña: 1234
+Telefono: 1234
+Email: 12345@1223.com
+Sexo: Mileurista
+/-----------------------/
+Nombre: Prueba
+Apellidos: asajsajs
+Contraseña: asdlfjk
+Telefono: 0578342
+Email: frsadasdf@dskalhfl-com
+Sexo: Otro
+/-----------------------/
