@@ -1,3 +1,9 @@
+nav{
+    display: flex;
+    margin-left: 25px;
+    margin-top: 25px;
+}
+
 nav ul {
     list-style: none;
     padding: 0;
@@ -12,11 +18,11 @@ nav ul li a {
     text-decoration: none;
     padding: 5px 10px;
     color: inherit;
-    border: 1px solid #ccc;
+    border: 1px solid #000;
     border-radius: 5px;
     transition: background-color 0.3s;
 }
 
 nav ul li a:hover{
-    background-color: #ccc;
+    background-color: white;
 }
