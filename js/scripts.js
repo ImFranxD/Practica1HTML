@@ -13,18 +13,8 @@ window.onload = function() {
         cuerpoTabla.innerHTML = "";
         usuarios.forEach((usuario, index) => {
             const row = cuerpoTabla.insertRow();
-            row.innerHTML = `<td>${usuario.nombre}</td><td>${usuario.apellidos}</td><td>${usuario.email}</td><td>${usuario.tlf}</td><td><button class="borrarUsuario" data-index="${index}" onclick="borrarFila(${index})">X</button></td>`;
-        });
+            row.innerHTML = `<td>${usuario.nombre}</td><td>${usuario.apellidos}</td><td>${usuario.email}</td><td>${usuario.tlf}</td><td><button class="borrarUsuario" data-index="${index}">X</button><button class="editarUsuario" data-index="${index}" onclick="editarUsuario('${index}')">Editar</button></td>`;        });
     }
-
-    rellenarTabla();
-
-    cuerpoTabla.addEventListener("click", function(event){
-        if(event.target.classList.contains("borrarUsuario")){
-            const index = event.target.getAttribute("data-index");
-            cuerpoTabla.deleteRow(index);
-        }
-    });
 
     function filtrarTabla(){
         const input = document.getElementById("filtro");
@@ -45,8 +35,58 @@ window.onload = function() {
         }
     }
 
+    function editarUsuario(index){
+        const usuario = usuarios[index];
+
+        document.getElementById('FormEditarUsuario').style.display = 'block';
+        document.getElementById('NombreEditado').value = usuario.nombre;
+        document.getElementById('ApellidosEditado').value = usuario.apellidos;
+        document.getElementById('EmailEditado').value = usuario.email;
+        document.getElementById('TlfEditado').value = usuario.tlf;
+        document.getElementById('FormEditarUsuario').setAttribute('data-edit-index', index);
+    }
+
+    function guardarEditUsuario(){
+        const index = document.getElementById('FormEditarUsuario').getAttribute('data-edit-index')
+
+        if(index !==null){
+            usuarios[index].nombre = document.getElementById('NombreEditado').value;
+            usuarios[index].apellido = document.getElementById('ApellidosEditado').value;
+            usuarios[index].email = document.getElementById('EmailEditado').value;
+            usuarios[index].tlf = document.getElementById('TlfEditado').value;
+
+            rellenarTabla();
+
+            document.getElementById('FormEditarUsuario').style.display = 'none';
+        }
+    }
+
+    function cancelarEdicion(){
+        document.getElementById('FormEditarUsuario').style.display = 'none';
+    }
+
+    
+    rellenarTabla();
+
     document.getElementById("filtro").addEventListener("input", function(){
         filtrarTabla();
     });
 
+    cuerpoTabla.addEventListener("click", function(event){
+        if(event.target.classList.contains("borrarUsuario")){
+            const index = event.target.getAttribute("data-index");
+            cuerpoTabla.deleteRow(index);
+        }else if(event.target.classList.contains("editarUsuario")){
+            const index = event.target.getAttribute("data-index")
+            editarUsuario(index);
+        }
+    });
+
+    document.getElementById("botonGuardar").addEventListener('click', function(){
+        guardarEditUsuario();
+    });
+
+    document.getElementById("botonCancelar").addEventListener('click', function(){
+        cancelarEdicion();
+    });
 };
