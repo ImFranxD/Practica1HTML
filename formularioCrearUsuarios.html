@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <div id="contenedorNav"></div>
+    </header>
+    <br>
+    <main>
+        <div>
+            <form class="formulario" method="post" action="ws/crearUsuario2.php">
+                <fieldset>
+                    <legend>Datos personales</legend>
+                    <div>
+                        <label>Nombre</label>
+                        <input type="text" id="nombre" name="nombre">
+                        <br>
+                        <label>Apellidos</label>
+                        <input type="text" id="apellidos" name="apellidos"> 
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <legend>Datos secundarios</legend>
+                    <div>
+                        <label>Contraseña</label>
+                        <input type="password" id="password" name="password">
+                        <br>
+                        <label>Teléfono</label>
+                        <input type="number" id="telefono" name="telefono">
+                        <br>
+                        <label>Email</label>
+                        <input type="email" id="email" name="email">
+                        <label>Fecha de nacimiento</label>
+                        <input type="date" id="fecha_nacimiento" name="fecha_nacimiento">
+                    </div>
+                    <div>
+                        <label>Sexo</label>
+                        <div>
+                            <label>
+                                <input type="radio" name="sexo" value="Hombre">Hombre
+                            </label>
+                            <br>
+                            <label>
+                                <input type="radio" name="sexo" value="Mujer">Mujer
+                            </label>
+                            <br>
+                            <label>
+                                <input type="radio" name="sexo" value="Otro">Otro
+                            </label>
+                            <br>
+                            <label>
+                                <input type="radio" name="sexo" value="Mileurista">Mileurista
+                            </label>
+                        </div>
+                    </div>
+                </fieldset>
+                <button>Enviar formulario</button>
+            </form>
+        </div>
+    </main>
+    <footer>
+        <p>©COPYRIGHT Todos los derechos reservados</p>
+    </footer>
+</body>
+</html>
