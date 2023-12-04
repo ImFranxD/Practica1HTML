@@ -46,6 +46,8 @@ window.onload = function() {
         document.getElementById('FormEditarUsuario').setAttribute('data-edit-index', index);
     }
 
+
+    /*Anterior guardarEditUsuario
     function guardarEditUsuario(){
         const index = document.getElementById('FormEditarUsuario').getAttribute('data-edit-index')
 
@@ -59,6 +61,33 @@ window.onload = function() {
 
             document.getElementById('FormEditarUsuario').style.display = 'none';
         }
+    }*/
+
+    //Editar usuario con sweetAlert2
+    function guardarEditUsuario(){
+        const index = document.getElementById('FormEditarUsuario').getAttribute('data-edit-index');
+
+        if(index !==null){
+            Swal.fire({
+                title : '¿Deseas realizar los cambios?',
+                text : 'Una vez aceptado esta acción es irreversible',
+                icon : 'warning',
+                showCancelButton : true,
+                confirmButtonText : 'Si, editar usuario',
+                cancelButtonText : 'Cancelar'
+            }).then((result) => {
+                if(result.isConfirmed){
+                    usuarios[index].nombre = document.getElementById('NombreEditado').value;
+                    usuarios[index].apellido = document.getElementById('ApellidosEditado').value;
+                    usuarios[index].email = document.getElementById('EmailEditado').value;
+                    usuarios[index].tlf = document.getElementById('TlfEditado').value;
+
+                    rellenarTabla();
+
+                    document.getElementById('FormEditarUsuario').style.display = 'none';
+                }
+            });
+        };
     }
 
     function cancelarEdicion(){
@@ -72,12 +101,36 @@ window.onload = function() {
         filtrarTabla();
     });
 
+    /*Anterior borrar usuario de la tabla
     cuerpoTabla.addEventListener("click", function(event){
         if(event.target.classList.contains("borrarUsuario")){
             const index = event.target.getAttribute("data-index");
             cuerpoTabla.deleteRow(index);
         }else if(event.target.classList.contains("editarUsuario")){
             const index = event.target.getAttribute("data-index")
+            editarUsuario(index);
+        }
+    });*/
+
+    //Borrar usuario con sweetAlert2
+    cuerpoTabla.addEventListener("click", function(event){
+        if(event.target.classList.contains("borrarUsuario")){
+            const index = event.target.getAttribute("data-index");
+
+            Swal.fire({
+                title : '¿Deseas eliminar el usuario seleccionado?',
+                text : 'Una vez aceptado esta acción es irreversible',
+                icon : 'warning',
+                showCancelButton : true,
+                confirmButtonText : 'Si, eliminar usuario',
+                cancelButtonText : 'Cancelar'
+            }).then((result) => {
+                if(result.isConfirmed){
+                    cuerpoTabla.deleteRow(index);
+                }
+            });
+        }else if(event.target.classList.contains("editarUsuario")){
+            const index = event.target.getAttribute("data-index");
             editarUsuario(index);
         }
     });

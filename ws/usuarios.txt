@@ -62,3 +62,17 @@ Telefono: 0578342
 Email: frsadasdf@dskalhfl-com
 Sexo: Otro
 /-----------------------/
+Nombre: Prueba
+Apellidos: SweetAlert2
+Contraseña: 1234
+Telefono: 1234
+Email: 1234@prueba.com
+Sexo: Mileurista
+/-----------------------/
+Nombre: PruebaSWetesa
+Apellidos: sdafsafd
+Contraseña: asdfasdf
+Telefono: 12341234
+Email: 12345@1223.com
+Sexo: Mileurista
+/-----------------------/
