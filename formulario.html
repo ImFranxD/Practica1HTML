@@ -5,7 +5,29 @@
     <link rel="stylesheet" href="css/barraNavegacion.css">
     <link rel="stylesheet" href="css/formulario.css">
 
-    <script src="js/scripts.js"></script>
+    <script>
+        const formulario = document.getElementById("formulario");
+
+        formulario.addEventListener('submit', function(event){
+            event.preventDefault();
+
+            console.log("Entro");
+
+            Swal.fire({
+                title : '¿Deseas crear el usuario?',
+                text : 'Asegúrate de que los datos son correctos antes de confirmar',
+                icon : 'warning',
+                showCancelButton : true,
+                confirmButtonText : 'Si, crear usuario',
+                cancelButtonText : 'Cancelar'
+            }).then((result) => {
+                if(result.isConfirmed){
+                    formulario.submit();
+                }
+            });
+        });
+
+    </script>
     <script src="js/nav.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     
@@ -18,7 +40,7 @@
     <br>
     <main>
         <div>
-            <form class="formulario" method="post" action="ws/crearUsuario.php">
+            <form class="formulario" id="fomulario">
                 <fieldset>
                     <legend>Datos personales</legend>
                     <div>

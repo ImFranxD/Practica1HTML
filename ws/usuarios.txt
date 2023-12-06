@@ -76,3 +76,45 @@ Telefono: 12341234
 Email: 12345@1223.com
 Sexo: Mileurista
 /-----------------------/
+Nombre: Prueba12343
+Apellidos: 1234124
+Contraseña: 1231231412
+Telefono: 2143421342134
+Email: 12345@23421341234.com
+Sexo: Mileurista
+/-----------------------/
+Nombre: Fran
+Apellidos: qwerqwerwqer
+Contraseña: qwerqwerqwer
+Telefono: 21342134
+Email: 12345@12232134.com
+Sexo: Mileurista
+/-----------------------/
+Nombre: Fran
+Apellidos: qwerqwerwqer
+Contraseña: qwerqwerqwer
+Telefono: 21342134
+Email: 12345@12232134.com
+Sexo: Mileurista
+/-----------------------/
+Nombre: Fran
+Apellidos: qwerqwerwqer
+Contraseña: 
+Telefono: 213421234
+Email: 12345@12232134.com
+Sexo: Mileurista
+/-----------------------/
+Nombre: 234qerqwer
+Apellidos: qwerqwerwqer
+Contraseña: qwerqwerqwer
+Telefono: 21342134
+Email: 1234qwer@wdfasdf.com
+Sexo: Mileurista
+/-----------------------/
+Nombre: Fran
+Apellidos: Mellado
+Contraseña: 21342134
+Telefono: 12342134
+Email: 12345@1223.com
+Sexo: Otro
+/-----------------------/
