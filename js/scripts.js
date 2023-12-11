@@ -12,23 +12,6 @@ window.onload = function() {
     
     const cuerpoTabla = document.querySelector("table tbody");
 
-    async function cargarAlumnos(){
-        try{
-            const response = await fetch('ws/getUsuario.php');
-            const data = await response.json();
-
-            console.log("Entro dentro de la funcion");
-
-            if (data.success){
-                console.log("He conseguido los datos");
-                const alumno = data.data;
-                rellenarTabla(alumno);
-            }
-        }catch(error){
-            console.error("Error en la solicitud: " + error.message);
-        }
-    }
-
     function rellenarTabla(alumnos){
         console.log("Entro a rellenar tabla");
 
@@ -43,8 +26,6 @@ window.onload = function() {
         }
         
     }
-
-    
 
     /*Antiguo rellenarTabla
     function rellenarTabla(){
@@ -73,6 +54,7 @@ window.onload = function() {
         }
     }
 
+    /*Antiguo editarUsuario
     function editarUsuario(index){
         const usuario = usuarios[index];
 
@@ -83,7 +65,7 @@ window.onload = function() {
         document.getElementById('TlfEditado').value = usuario.tlf;
         document.getElementById('FormEditarUsuario').setAttribute('data-edit-index', index);
     }
-
+    */
 
     /*Anterior guardarEditUsuario
     function guardarEditUsuario(){
@@ -100,37 +82,6 @@ window.onload = function() {
             document.getElementById('FormEditarUsuario').style.display = 'none';
         }
     }*/
-
-    //Editar usuario con sweetAlert2
-    function guardarEditUsuario(){
-        const index = document.getElementById('FormEditarUsuario').getAttribute('data-edit-index');
-
-        if(index !==null){
-            Swal.fire({
-                title : '¿Deseas realizar los cambios?',
-                text : 'Una vez aceptado esta acción es irreversible',
-                icon : 'warning',
-                showCancelButton : true,
-                confirmButtonText : 'Si, editar usuario',
-                cancelButtonText : 'Cancelar'
-            }).then((result) => {
-                if(result.isConfirmed){
-                    usuarios[index].nombre = document.getElementById('NombreEditado').value;
-                    usuarios[index].apellido = document.getElementById('ApellidosEditado').value;
-                    usuarios[index].email = document.getElementById('EmailEditado').value;
-                    usuarios[index].tlf = document.getElementById('TlfEditado').value;
-
-                    rellenarTabla();
-
-                    document.getElementById('FormEditarUsuario').style.display = 'none';
-                }
-            });
-        };
-    }
-
-    function cancelarEdicion(){
-        document.getElementById('FormEditarUsuario').style.display = 'none';
-    }
 
     
     rellenarTabla();
@@ -150,34 +101,56 @@ window.onload = function() {
         }
     });*/
 
-    //Borrar usuario con sweetAlert2
-    cuerpoTabla.addEventListener("click", function(event){
-        if(event.target.classList.contains("borrarUsuario")){
-            const index = event.target.getAttribute("data-index");
+    async function cargarAlumnos(){
+        try{
+            const response = await fetch('ws/getUsuario.php');
+            const data = await response.json();
+    
+            console.log("Entro dentro de la funcion");
+    
+            if (data.success){
+                console.log("He conseguido los datos");
+                alumnos = data.data;
+                rellenarTabla(alumnos);
+            }
+        }catch(error){
+            console.error("Error en la solicitud: " + error.message);
+        }
+    }
 
-            Swal.fire({
-                title : '¿Deseas eliminar el usuario seleccionado?',
-                text : 'Una vez aceptado esta acción es irreversible',
-                icon : 'warning',
-                showCancelButton : true,
-                confirmButtonText : 'Si, eliminar usuario',
-                cancelButtonText : 'Cancelar'
-            }).then((result) => {
-                if(result.isConfirmed){
-                    cuerpoTabla.deleteRow(index);
+    async function borrarUsuario(id){
+        const response = await fetch(`ws/deleteUsuario.php?id=${id}`,{
+            method : 'GET',
+            headers : {}
+        });
+        const data = await response.json();
+
+        Swal.fire({
+            title : '¿Deseas borrar el usuario?',
+            text : 'Una vez aceptado esta acción es irreversible',
+            icon : 'question',
+            showCancelButton : true,
+            confirmButtonText : 'Si, borrar usuario',
+            cancelButtonText : 'Cancelar'
+        }).then((result) => {
+            if(result.isConfirmed){
+                if(data.success == true){
+                    Swal.fire('Eliminado', 'El usuario ha sido eliminado con exito', 'success');
+                    cargarAlumnos();
+                }else{
+                    Swal.fire('Error', 'No se pudo eliminar el usuario', 'error');
                 }
-            });
-        }else if(event.target.classList.contains("editarUsuario")){
-            const index = event.target.getAttribute("data-index");
-            editarUsuario(index);
+            }
+        });
+    }
+
+    cuerpoTabla.addEventListener('click', function(event){
+        if(event.target.classList.contains('borrarUsuario')){
+            const index = event.target.getAttribute('data-index');
+            const id = alumnos[index].id;
+
+            borrarUsuario(id);
         }
     });
 
-    document.getElementById("botonGuardar").addEventListener('click', function(){
-        guardarEditUsuario();
-    });
-
-    document.getElementById("botonCancelar").addEventListener('click', function(){
-        cancelarEdicion();
-    });
 };
